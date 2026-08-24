@@ -1,12 +1,11 @@
 # Sentiment: Baseline vs Fine-Tuned Transformer
 
 Comparing a classic TF-IDF + Logistic Regression baseline against a fine-tuned
-DistilBERT model on IMDB movie reviews. Built this to actually understand
-fine-tuning end to end, not just run a tutorial notebook.
+DistilBERT model on IMDB movie reviews.
 
 ## What's here
 
-`sentiment_classification.ipynb` — the whole thing, built incrementally:
+`sentiment_classification.ipynb` has the whole thing, built incrementally:
 
 - load a 2000/500 train/test subset of IMDB
 - TF-IDF + Logistic Regression baseline, evaluated with precision/recall/F1
@@ -23,7 +22,7 @@ fine-tuning end to end, not just run a tutorial notebook.
 | Fine-tuned DistilBERT | 0.818 | 0.797 | 0.846 | 0.821 |
 
 DistilBERT doesn't actually beat the baseline here. Validation F1 peaked
-after epoch 1 and dropped after epoch 2 while training loss kept falling —
+after epoch 1 and dropped after epoch 2 while training loss kept falling,
 classic overfitting on a small (2k example) training set. Reviews were also
 truncated to 128 tokens to keep CPU training time reasonable, which loses
 information on longer reviews. Left it as-is because the point was to see
@@ -36,4 +35,4 @@ pip install -r requirements.txt
 jupyter notebook sentiment_classification.ipynb
 ```
 
-No GPU used — trained on CPU, ~20 min for 2 epochs on the subset above.
+No GPU used, trained on CPU, ~20 min for 2 epochs on the subset above.
